@@ -57,7 +57,7 @@ export class Lexer {
             if (/[0-9]/.test(char)) {
                 let nString: string = "";
 
-                while (!this.atEOF() && /[0-9]/.test(this.peek())) nString += this.advance;
+                while (!this.atEOF() && /[0-9]/.test(this.peek())) nString += this.advance();
 
                 tokens.push(this.createToken(TokenType.Number, nString));
             }
