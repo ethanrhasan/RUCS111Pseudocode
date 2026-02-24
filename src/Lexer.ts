@@ -163,6 +163,8 @@ export class Lexer {
             }
         }
 
-        return [];
+        tokens.push(this.createToken(TokenType.EOF, "EOF"));
+
+        return tokens;
     }
 }
