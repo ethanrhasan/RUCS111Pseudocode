@@ -7,7 +7,7 @@ export class Lexer {
 
     private cursor: number = 0;
     private line: number = 1;
-    private column: number = 1;
+    private idx: number = 1;
 
     public constructor(source: string) {
         this.source = source;
@@ -26,7 +26,7 @@ export class Lexer {
     }
 
     private advance(): string {
-        this.column++;
+        this.idx++;
         return this.source[this.cursor++];
     }
 
@@ -35,7 +35,7 @@ export class Lexer {
             type: tokenType,
             value: value,
             line: this.line,
-            column: this.column - value.length,
+            idx: this.idx - value.length,
         } satisfies Token;
     }
 
@@ -48,7 +48,7 @@ export class Lexer {
             if (/\s/.test(char)) {
                 if (char === "\n") {
                     this.line++;
-                    this.column = 0;
+                    this.idx = 0;
                 }
                 this.advance();
                 continue;
@@ -91,6 +91,48 @@ export class Lexer {
 
                 continue;
             }
+
+            //
+
+            if (char === "=" && this.peekNext() === "=") {
+                this.advance();
+                this.advance();
+
+                tokens.push(this.createToken(TokenType.Equals, "=="));
+
+                continue;
+            }
+
+            if (char === "!" && this.peek() === "=") {
+                this.advance();
+                this.advance();
+
+                tokens.push(this.createToken(TokenType.NotEquals, "!="));
+
+                continue;
+            }
+
+            if (char === ">" && this.peek() === "=") {
+                this.advance();
+                this.advance();
+
+                tokens.push(this.createToken(TokenType.GreaterEquals, ">="));
+
+                continue;
+            }
+
+            if (char === "<" && this.peek() === "=") {
+                this.advance();
+                this.advance();
+
+                tokens.push(this.createToken(TokenType.LessEquals, "<="));
+
+                continue;
+            }
+
+            const singleCharacterSymbol = this.advance();
+
+            //
         }
 
         return [];
