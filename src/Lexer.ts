@@ -132,7 +132,35 @@ export class Lexer {
 
             const singleCharacterSymbol = this.advance();
 
-            //
+            switch (singleCharacterSymbol) {
+                case "+":
+                    tokens.push(this.createToken(TokenType.Plus, "+"));
+                    break;
+                case "-":
+                    tokens.push(this.createToken(TokenType.Minus, "-"));
+                    break;
+                case "*":
+                    tokens.push(this.createToken(TokenType.Multiply, "*"));
+                    break;
+                case "/":
+                    tokens.push(this.createToken(TokenType.Divide, "/"));
+                    break;
+                case ">":
+                    tokens.push(this.createToken(TokenType.Greater, ">"));
+                    break;
+                case "<":
+                    tokens.push(this.createToken(TokenType.Less, "<"));
+                    break;
+                case "(":
+                    tokens.push(this.createToken(TokenType.ParenL, "("));
+                    break;
+                case ")":
+                    tokens.push(this.createToken(TokenType.ParenR, ")"));
+                    break;
+                default:
+                    tokens.push(this.createToken(TokenType.Unknown, singleCharacterSymbol));
+                    console.warn(singleCharacterSymbol);
+            }
         }
 
         return [];
