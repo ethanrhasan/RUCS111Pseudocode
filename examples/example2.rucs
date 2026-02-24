@@ -1,0 +1,7 @@
+READ n
+
+SET a TO 5
+
+ADD a TO n
+
+DISPLAY n

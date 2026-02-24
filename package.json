@@ -1,0 +1,20 @@
+{
+  "name": "rucs111pseudocode",
+  "version": "1.0.0",
+  "description": "a functional interpreter for the Rutgers CS111 Pseudocode language.",
+  "homepage": "https://github.com/givikuna/RUCS111Pseudocode#readme",
+  "bugs": {
+    "url": "https://github.com/givikuna/RUCS111Pseudocode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/givikuna/RUCS111Pseudocode.git"
+  },
+  "license": "ISC",
+  "author": "Givi Tsvariani",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
