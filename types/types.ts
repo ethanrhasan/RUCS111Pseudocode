@@ -49,10 +49,3 @@ export enum TokenType {
     EOF = "EOF",
     Unknown = "Unknown",
 }
-
-export interface Token {
-    type: TokenType;
-    value: string;
-    line: number;
-    idx: number;
-}

@@ -1,4 +1,6 @@
-import { Token, TokenType } from "../types/types";
+import { Token } from "../interfaces/Token";
+
+import { TokenType } from "../types/types";
 
 import { keywords } from "../constants/keywords";
 
